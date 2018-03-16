@@ -3,6 +3,8 @@
   <head>
     <title>BookReview</title>
     <%= csrf_meta_tags %>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <%= stylesheet_link_tag    'public/application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'public/application', 'data-turbolinks-track': 'reload' %>
@@ -10,8 +12,9 @@
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
+    <%= render "layouts/nav_bar" %>
+    <%= render "layouts/jumbotron" %>
     <%= yield %>
-    <%= render 'layouts/footer' %>
+    <%= render "layouts/footer"%>
   </body>
 </html>

@@ -30,4 +30,11 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  layouts:
+    nav_bar:
+      home: "Trang chủ"
+      logo: "Literary Book Review"
+      request: "Yêu cầu sách mới"
+      submit_title: "Tên sách"
+      submit_author: "Tác giả"
+      login: "Đăng nhập"
