@@ -1,0 +1,42 @@
+<div>
+  <% if @reviews.any? %>
+    <% @reviews.each do |review| %>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <strong>
+            <%= link_to find_user_review(review.user_id), user_path(review.user_id) %>
+          </strong>
+          <% if review_update? review %>
+            <%= t ".h5_update", time: time_ago_in_words(review.updated_at) %>
+          <% else %>
+            <%= t ".h5_create", time: time_ago_in_words(review.created_at) %>
+          <% end %>
+          <% if logged_in? && correct_user_review?(review) %>
+            <span class="action_buttons">
+              <%= link_to t(".edit"), edit_book_review_path(review.book, review) %>
+              |
+              <%= link_to t(".del"), book_review_path(review.book, review),
+              method: :delete, data: {confirm: t(".confirm")} %>
+            </span>
+          <% end %>
+        </div>
+        <div class="panel-body">
+          <div>
+            <%= load_star_rating(review.rate) %>
+          </div>
+          <div><%= review.content %></div>
+          <hr class="soft"/>
+          <div>
+            <%= link_to t(".like"), "#" %>
+            <%= link_to t(".detail"), book_review_path(@book.id, review.id) %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <div>
+      <p>Không có bài đánh giá cho quyển sách này.</p>
+    </div>
+  <% end %>
+  <%= will_paginate @reviews, id: "paginate" %>
+</div>

@@ -19,4 +19,12 @@ module ApplicationHelper
       content_tag :span, nil, class: "fa fa-star-o set_color"
     end
   end
+
+  def book_star book
+    if book.reviews.blank?
+      @average = 0
+    else
+      @average = book.reviews.average(:rate).round 2
+    end
+  end
 end

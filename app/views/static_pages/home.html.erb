@@ -4,53 +4,7 @@
 <div class = "w3-row-padding w3-padding">
   <h2 class="text-center ">SÁCH MỚI</h2>
 </div>
-
-  <div class="w3-row-padding w3-padding-16 w3-center">
-    <div class="w3-quarter">
-      <%= image_tag("book.jpg")%>
-      <%= load_star_rating(5) %>
-      <h3>The Perfect Sandwich, A Real NYC ClassicThe Perfect Sandwich, A Real NYC Classic</h3>
-    </div>
-    <div class="w3-quarter">
-      <%= image_tag("book.jpg")%>
-      <%= load_star_rating(5) %>
-      <h3>Let Me Tell You About This Steak</h3>
-    </div>
-    <div class="w3-quarter">
-      <%= image_tag("book.jpg")%>
-      <%= load_star_rating(5) %>
-      <h3>Cherries, interrupted</h3>
-    </div>
-    <div class="w3-quarter">
-      <%= image_tag("book.jpg")%>
-      <%= load_star_rating(5) %>
-      <h3>Once Again, Robust Wine and Vegetable Pasta</h3>
-    </div>
-  </div>
-
-  <!-- Second Photo Grid-->
-  <div class="w3-row-padding w3-padding-16 w3-center">
-    <div class="w3-quarter">
-      <%= image_tag("book.jpg")%>
-      <%= load_star_rating(5) %>
-      <h3>All I Need Is a Popsicle</h3>
-    </div>
-    <div class="w3-quarter">
-      <%= image_tag("book.jpg")%>
-      <%= load_star_rating(5) %>
-      <h3>Salmon For Your Skin</h3>
-    </div>
-    <div class="w3-quarter">
-      <%= image_tag("book.jpg")%>
-      <%= load_star_rating(5) %>
-      <h3>The Perfect Sandwich, A Real Classic</h3>
-    </div>
-    <div class="w3-quarter">
-      <%= image_tag("book.jpg")%>
-      <%= load_star_rating(5) %>
-      <h3>Le French</h3>
-    </div>
-  </div>
+ <%= render "static_pages/list_books" %>
 
   <!-- Pagination -->
  <!--  <div class="w3-center w3-padding-32">
@@ -63,3 +17,4 @@
       <a href="#" class="w3-bar-item w3-button w3-hover-black">»</a>
     </div>
   </div> -->
+</div>

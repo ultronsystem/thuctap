@@ -1,0 +1,33 @@
+<div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
+  <div class="w3-row-padding">
+    <div class="col-sm-4 w3-center book-detail">
+        <%= image_tag("book.jpg")%>
+    </div>
+    <div class="col-sm-8 w3-left">
+      <p><h2><%=@book.title%></h2></p>
+      <p>Tác giả: <%=@book.author%></p>
+      <p>Thể loại: <% @book.categories.each do |cat| %>
+        <%= cat.name_cat %>
+        <% end %></p>
+      <p>Ngày xuất bản: <%=@book.publish_date%></p>
+      <p>Số trang: <%=@book.number_of_pages%></p>
+      <p>Điểm đánh giá: <%=@average%> / 5 (<%=@count_rate %> đánh giá)</p>
+    </div>
+  </div>
+    <div class="w3-row-padding w3-padding">
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#home">Tóm tắt nội dung</a></li>
+        <li><a data-toggle="tab" href="#menu1">Đánh giá</a></li>
+      </ul>
+      <div class="tab-content w3-padding">
+        <div id="home" class="tab-pane fade in active">
+          <h3>Tóm tắt</h3>
+          <p><%= @book.summary%></p>
+        </div>
+        <div id="menu1" class="tab-pane fade">
+          <h3>Đánh giá</h3>
+          <%= render "reviews/review" %>
+        </div>
+      </div>
+   </div>
+</div>

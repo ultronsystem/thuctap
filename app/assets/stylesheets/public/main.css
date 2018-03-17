@@ -55,3 +55,6 @@ footer {
 .custom-height {
   min-height: 400px;
 }
+.book-detail img{
+  width: 100%;
+}

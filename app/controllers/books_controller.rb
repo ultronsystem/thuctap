@@ -5,7 +5,13 @@ class BooksController < ApplicationController
   end
 
   def show
-
+    @reviews = @book.reviews.newest
+    @reviews = collection_paginate @reviews, params[:page], 5
+    book_star @book
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   private
