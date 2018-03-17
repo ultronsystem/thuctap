@@ -8,4 +8,6 @@ class Book < ApplicationRecord
   scope :cat_books, ->(cat_id) do
     joins(:book_categories).where("category_id = #{cat_id}").order("title")
   end
+
+  scope :newest, ->{order created_at: :desc}
 end

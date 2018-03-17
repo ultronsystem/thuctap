@@ -6,4 +6,11 @@ Rails.application.routes.draw do
   root "static_pages#home"
 
   resources :categories, only: :show
+
+  resources :books, only: %i(index show) do
+    resources :user_books, only: %i(create update)
+    resources :reviews do
+      resources :comments
+    end
+  end
 end
