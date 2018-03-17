@@ -38,3 +38,6 @@ en:
       submit_title: "Tên sách"
       submit_author: "Tác giả"
       login: "Đăng nhập"
+  static_pages:
+    home:
+      all_book: "Tất cả sách"

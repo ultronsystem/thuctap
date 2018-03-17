@@ -49,3 +49,9 @@ footer {
 .w3-quarter img{
   width: 100%;
 }
+.set_color {
+  color: orange;
+}
+.custom-height {
+  min-height: 400px;
+}

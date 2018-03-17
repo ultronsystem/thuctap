@@ -1,0 +1,19 @@
+<div  id="list_book">
+ <div class="w3-row-padding w3-padding-16 w3-center">
+<% if @books.any? %>
+    <% @books.each do |book| %>
+    <div class="w3-quarter custom-height">
+      <%= image_tag("book.jpg")%>
+      <%= load_star_rating(5) %>
+      <h3><%=book.title%></h3>
+    </div>
+    <% end %>
+<% end %>
+  </div>
+  <div class="w3-center w3-padding-32">
+  <div class="w3-bar">
+    <%= will_paginate @books, id: "paginate" %>
+  </div>
+</div>
+  </div>
+
