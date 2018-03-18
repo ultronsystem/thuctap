@@ -1,0 +1,64 @@
+<% provide :title, @user.fullname %>
+<div class = "well well-small">
+  <div class = "row-fluid">
+    <div class="span5">
+      <%= image_tag("user-icon.png") %>
+    </div>
+    <div class="span7">
+      <h3><%= @user.fullname %></h3>
+      <hr class="soft"/>
+      <div>
+        <% @user ||= current_user %>
+        <div class="stats">
+          <a href="#">
+            <strong id="following" class="stat">
+              so
+            </strong>
+            User following
+          </a>
+          <a href="#">
+            <strong id="followers" class="stat">
+              so
+            </strong>
+            User follower
+          </a>
+        </div>
+      </div>
+      <% if current_user? @user %>
+        <%= link_to "Cập nhật thông tin cá nhân", edit_user_path(current_user) %>
+        <% if current_user.is_admin? %>
+          <%= link_to t(".admin"), admin_root_path %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <hr class="softn clr"/>
+  <ul id="productDetail" class="nav nav-tabs mytab">
+    <li class="active"><a href="#timeline" data-toggle="tab">
+      Dong thoi gian
+    </a></li>
+    <li class=""><a href="#list_favorite_books" data-toggle="tab">
+      DS sach ua thich
+    </a></li>
+    <% if current_user? @user %>
+      <li class=""><a href="#reading_history" data-toggle="tab">
+        Lich su doc
+      </a></li>
+    <% end %>
+  </ul>
+  <div id="myTabContent" class="tab-content tabWrapper">
+    <div class="tab-pane fade active in" id="timeline">
+      <div class="row-fluid content_review">
+        Hien thi tin tuc o dong thoi gian
+      </div>
+    </div>
+    <div class="tab-pane fade" id="list_favorite_books">
+      render file zo
+    </div>
+    <% if current_user? @user %>
+      <div class="tab-pane fade" id="reading_history">
+        render file zo
+      </div>
+    <% end %>
+  </div>
+</div>

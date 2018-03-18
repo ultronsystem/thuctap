@@ -38,7 +38,16 @@
       </div>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to t(".login"), '#' %></li>
+        <% if logged_in? %>
+          <li>
+            <%= link_to logout_path, method: :delete do %>
+              Đăng Xuất
+            <% end %>
+          </li>
+        <% else %>
+          <li><%= link_to "Đăng ký", signup_path %></li>
+          <li><%= link_to "Đăng nhập", login_path %></li>
+        <% end %>
       </ul>
     </div>
   </div>
