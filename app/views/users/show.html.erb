@@ -1,64 +1,58 @@
 <% provide :title, @user.fullname %>
-<div class = "well well-small">
-  <div class = "row-fluid">
-    <div class="span5">
-      <%= image_tag("user-icon.png") %>
-    </div>
-    <div class="span7">
-      <h3><%= @user.fullname %></h3>
-      <hr class="soft"/>
-      <div>
+<div class="w3-main w3-content" style="max-width:1200px;">
+    <div class="w3-row-padding">
+  <div class="col-sm-5 text-center">
+    <%= gravatar_for @user %>
+  </div>
+  <div class="col-sm-5">
+    <h2><%= @user.fullname %>  </h2>
+     <div>
         <% @user ||= current_user %>
         <div class="stats">
-          <a href="#">
+          <a href="<%= user_following_index_path(@user.id) %>">
+
             <strong id="following" class="stat">
-              so
+              <%= @user.following.size %>
             </strong>
-            User following
+           Following
           </a>
-          <a href="#">
+          <a href="<%= user_followers_index_path(@user.id) %>">
             <strong id="followers" class="stat">
-              so
+              <%= @user.followers.size %>
             </strong>
-            User follower
+            Follower
           </a>
         </div>
-      </div>
-      <% if current_user? @user %>
+    </div>
+    <%= render "follow_form" if logged_in? %>
+    <% if current_user? @user %>
         <%= link_to "Cập nhật thông tin cá nhân", edit_user_path(current_user) %>
         <% if current_user.is_admin? %>
           <%= link_to t(".admin"), admin_root_path %>
         <% end %>
       <% end %>
-    </div>
   </div>
-  <hr class="softn clr"/>
-  <ul id="productDetail" class="nav nav-tabs mytab">
-    <li class="active"><a href="#timeline" data-toggle="tab">
-      Dong thoi gian
-    </a></li>
-    <li class=""><a href="#list_favorite_books" data-toggle="tab">
-      DS sach ua thich
-    </a></li>
-    <% if current_user? @user %>
-      <li class=""><a href="#reading_history" data-toggle="tab">
-        Lich su doc
-      </a></li>
-    <% end %>
-  </ul>
-  <div id="myTabContent" class="tab-content tabWrapper">
-    <div class="tab-pane fade active in" id="timeline">
-      <div class="row-fluid content_review">
-        Hien thi tin tuc o dong thoi gian
+</div>
+<div class="w3-row-padding w3-padding" style="margin-top: 50px;">
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#timeline">Dòng thời gian</a></li>
+        <li><a data-toggle="tab" href="#list_favorite_books">Sách yêu thích</a></li>
+         <% if current_user? @user %>
+         <li><a data-toggle="tab" href="#reading_history">Lịch sử đọc sách</a></li>
+         <% end %>
+      </ul>
+      <div class="tab-content w3-padding">
+        <div id="timeline" class="tab-pane fade in active">
+          <h3>ABC</h3>
+        </div>
+        <div id="list_favorite_books" class="tab-pane fade">
+          <h3>DEF</h3>
+        </div>
+        <% if current_user? @user %>
+        <div id="reading_history" class="tab-pane fade">
+          <h3>XYZ</h3>
+        </div>
+        <% end %>
       </div>
-    </div>
-    <div class="tab-pane fade" id="list_favorite_books">
-      render file zo
-    </div>
-    <% if current_user? @user %>
-      <div class="tab-pane fade" id="reading_history">
-        render file zo
-      </div>
-    <% end %>
-  </div>
+   </div>
 </div>

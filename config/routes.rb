@@ -15,5 +15,9 @@ Rails.application.routes.draw do
   get "/login", to: "logins#new"
   post "/login", to: "logins#create"
   delete "/logout", to: "logins#destroy"
-  resources :users
+  resources :users, except: :destroy do
+    get "following/index"
+    get "followers/index"
+  end
+  resources :relationships, only: %i(create destroy)
 end
