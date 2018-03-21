@@ -1,38 +1,28 @@
 <% provide :title, t(".title") %>
-<h3>Đăng ký</h3>
-<hr class="soft"/>
-<div class="well">
-  <h3>Thông tin tài khoản</h3>
-  <%= form_for @user, html: {class: "form-horizontal"} do |f| %>
+<div class="row">
+  <div class="col-sm-3"></div>
+<div class="col-sm-6 sign-up">
+  <%= form_for @user, html: {class: "form-signup"} do |f| %>
+    <h1>Đăng Ký</h1>
+    <hr>
     <%= render "shared/error_messages", object: f.object %>
-    <div class = "control-group">
-      <%= f.label :fullname, "Họ tên:", class: "control-label" %>
-      <div class ="controls">
+      <%= f.label :fullname, "Họ tên:" %>
         <%= f.text_field :fullname %>
-      </div>
-    </div>
-    <div class = "control-group">
-      <%= f.label :email, "Địa chỉ email:", class: "control-label" %>
-      <div class ="controls">
+
+      <%= f.label :email, "Địa chỉ email:" %>
         <%= f.text_field :email %>
-      </div>
-    </div>
-    <div class = "control-group">
-      <%= f.label :password, "Mật khẩu:", class: "control-label" %>
-      <div class ="controls">
+
+      <%= f.label :password, "Mật khẩu:" %>
         <%= f.password_field :password %>
-      </div>
-    </div>
-    <div class = "control-group">
-      <%= f.label :password_confirmation, "Xác nhận mật khẩu:", class: "control-label" %>
-      <div class ="controls">
+
+      <%= f.label :password_confirmation, "Xác nhận mật khẩu:" %>
         <%= f.password_field :password_confirmation %>
+
+      <div class="clearfix">
+        <%= f.submit "Đăng ký", class: "signupbtn" %>
       </div>
-    </div>
-    <div class="control-group">
-      <div class="controls">
-        <%= f.submit "Đăng ký", class: "exclusive shopBtn" %>
-      </div>
-    </div>
   <% end %>
+</div>
+<div class="col-sm-3"></div>
+<div style="clear:both"></div>
 </div>

@@ -9,16 +9,11 @@ default: &default
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
-  # database: bookreviews
-  # username: root
-  # password: zicklog369
-  # host: localhost
-  # port: 3306
 
 development:
   <<: *default
   username: root
-  password: zicklog369
+  password: ""
   host: 127.0.0.1
   port: 3306
   database: bookreviews
@@ -29,11 +24,11 @@ development:
 test:
   <<: *default
   username: root
-  password: zicklog369
+  password: ""
   host: 127.0.0.1
   port: 3306
   database: bookreviews
 
 production:
   <<: *default
-  url: <%= ENV["DATABASE_URL"] %>
+  database: bookreviews
