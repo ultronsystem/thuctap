@@ -1,0 +1,5 @@
+<p>Xin chao <%= @user.fullname %>,</p>
+
+<p>Vui long nhan vao link ben duoi de kich hoat tai khoan cua ban:</p>
+
+<%= link_to "Kich hoat tai khoan", edit_account_activation_url(@user.activation_token, email: @user.email) %>
