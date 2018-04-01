@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @user = User.new user_params
     if @user.save
       UserMailer.account_activation(@user).deliver_now
-      flash[:info] = "Kiểm tra email để kích hoạt tài khoản."
+      flash[:info] = "Bạn đã đăng ký thành công. Kiểm tra email để kích hoạt tài khoản."
       redirect_to root_url
     else
       render :new

@@ -1,0 +1,25 @@
+<% provide :title, t(".title") %>
+<h3><%= t ".h3_update" %></h3>
+<hr class="soft"/>
+<div class="col-md-8 col-md-offset-4">
+  <%= form_for @user, url: admin_user_path(@user.id), html: {class: "form-horizontal"} do |f| %>
+    <%= render "shared/error_messages", object: f.object %>
+    <div class = "control-group">
+      <%= f.label :fullname, t(".fullname"), class: "control-label" %>
+      <div class ="controls">
+        <%= f.text_field :fullname %>
+      </div>
+    </div>
+    <div class = "control-group">
+      <%= f.label :email, class: "control-label" %>
+      <div class ="controls">
+        <%= f.text_field :email %>
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+        <%= f.submit t(".btn_update"), class: "exclusive shopBtn" %>
+      </div>
+    </div>
+  <% end %>
+</div>

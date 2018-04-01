@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   namespace :admin do
     get 'static_pages/home'
   end
@@ -21,4 +22,11 @@ Rails.application.routes.draw do
   end
   resources :relationships, only: %i(create destroy)
   resources :account_activations, only: [:edit]
+
+  namespace :admin do
+    root "static_pages#index"
+    resources :users
+    resources :categories
+    resources :books, except: :show
+  end
 end
