@@ -10,12 +10,12 @@
     <%= javascript_include_tag 'public/application', 'data-turbolinks-track': 'reload' %>
 
     <%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" %>
-
+  <%= javascript_include_tag Ckeditor.cdn_url %>
   </head>
 
   <body>
     <%= render "layouts/nav_bar" %>
-    <%= render "layouts/jumbotron" %>
+
      <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>
       <% end %>

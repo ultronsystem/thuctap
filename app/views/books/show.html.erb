@@ -2,16 +2,21 @@
   <div class="w3-row-padding">
     <div class="col-sm-4 w3-center book-detail">
         <%= image_tag @book.image.url %>
+        <%= link_to "Viết bài đánh giá", new_book_review_path(@book.id), class: "button-link"%>
     </div>
     <div class="col-sm-8 w3-left">
-      <p><h2><%=@book.title%></h2></p>
+      <p><h2><%=@book.title%></h2>  </p>
       <p>Tác giả: <%=@book.author%></p>
       <p>Thể loại: <% @book.categories.each do |cat| %>
         <%= cat.name_cat %>
         <% end %></p>
-      <p>Ngày xuất bản: <%=@book.publish_date%></p>
+      <p>Ngày xuất bản: <%=@book.publish_date.strftime("%d/%m/%Y") %></p>
       <p>Số trang: <%=@book.number_of_pages%></p>
       <p>Điểm đánh giá: <%=@average%> / 5 (<%=@count_rate %> đánh giá)</p>
+      <div id="mark_book">
+        <%= render "user_books/mark_book" %>
+      </div>
+
     </div>
   </div>
     <div class="w3-row-padding w3-padding">

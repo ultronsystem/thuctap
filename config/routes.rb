@@ -17,9 +17,11 @@ Rails.application.routes.draw do
   post "/login", to: "logins#create"
   delete "/logout", to: "logins#destroy"
   resources :users, except: :destroy do
+    resources :buy_requests, except: %i(show edit update)
     get "following/index"
     get "followers/index"
   end
+  get 'request_books/index'
   resources :relationships, only: %i(create destroy)
   resources :account_activations, only: [:edit]
 
