@@ -4,8 +4,14 @@
     <title><%= yield(:title) %> | <%= t "application.title" %></title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag "admin/admin", media: "all", "data-turbolinks-track": "reload" %>
+    <%= stylesheet_link_tag "admin/admin.css", media: "all", "data-turbolinks-track": "reload" %>
+
     <%= javascript_include_tag "admin/admin", "data-turbolinks-track": "reload" %>
+    <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" %>
+    <%= javascript_include_tag "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" %>
+    <%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" %>
+    <%= javascript_include_tag "https://code.jquery.com/jquery-3.2.1.slim.min.js" %>
+    <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" %>
     <%= javascript_include_tag Ckeditor.cdn_url %>
   </head>
   <body class = "fixed-nav sticky-footer bg-dark" id = "page-top">
