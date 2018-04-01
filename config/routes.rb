@@ -20,4 +20,5 @@ Rails.application.routes.draw do
     get "followers/index"
   end
   resources :relationships, only: %i(create destroy)
+  resources :account_activations, only: [:edit]
 end
