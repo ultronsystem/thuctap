@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BookReviewAdmin</title>
+    <title><%= yield(:title) %> | <%= t "application.title" %></title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'admin/admin', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'admin/admin', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "admin/admin", media: "all", "data-turbolinks-track": "reload" %>
+    <%= javascript_include_tag "admin/admin", "data-turbolinks-track": "reload" %>
+    <%= javascript_include_tag Ckeditor.cdn_url %>
   </head>
-
-  <body>
-    <%= render 'admin/layouts/header' %>
-    <%= yield %>
-    <%= render 'admin/layouts/footer' %>
+  <body class = "fixed-nav sticky-footer bg-dark" id = "page-top">
+    <%= render "admin/layouts/nav_bar" %>
+    <div class = "content-wrapper">
+      <div class = "container-fluid">
+        <% flash.each do |message_type, message| %>
+          <div class="alert alert-<%= message_type %>"><%= message %></div>
+        <% end %>
+        <%= yield %>
+      <div>
+      <%= render "admin/layouts/footer" %>
+    </div>
   </body>
 </html>

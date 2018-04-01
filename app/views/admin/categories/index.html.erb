@@ -1,0 +1,43 @@
+<% provide :title, "Quản lý thể loại" %>
+<ol class = "breadcrumb">
+  <li class = "breadcrumb-item">
+    <%= link_to "Trang chủ", admin_root_path %>
+  </li>
+  <li class = "breadcrumb-item active">Thể loại</li>
+</ol>
+<div class = "card mb-3">
+  <div class = "card-header">
+    <i class = "fa fa-list-alt "></i>
+    Danh sách thể loại
+    <%= link_to "Thêm", new_admin_category_path, class: "fa fa-plus addBtn" %>
+  </div>
+  <div class = "card-body">
+    <div class = "post-body">
+      <table class="table table-bordered table-condensed">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Tên thể loại</th>
+            <th>Chức năng</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if @categories.any? %>
+            <% @categories.each do |category| %>
+              <tr>
+                <td><%= category.id %></td>
+                <td><%= category.name_cat %></td>
+                <td>
+                  <%= link_to "Cập nhập", edit_admin_category_path(category.id)%> |
+                  <%= link_to "Xóa", admin_category_path(category.id),
+                    method: :delete, data: {confirm: "Xác nhận"} %>
+                </td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+      <%= will_paginate @categories %>
+  </div>
+  </div>
+</div>
