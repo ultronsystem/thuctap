@@ -1,5 +1,5 @@
-<p>Xin chao <%= @user.fullname %>,</p>
+<p>Xin chào <%= @user.fullname %>,</p>
 
-<p>Vui long nhan vao link ben duoi de kich hoat tai khoan cua ban:</p>
+<p>Vui lòng nhấn vào link bên dưới để kích hoạt tài khoản của bạn:</p>
 
-<%= link_to "Kich hoat tai khoan", edit_account_activation_url(@user.activation_token, email: @user.email) %>
+<%= link_to "Kích hoạt tài khoản", edit_account_activation_url(@user.activation_token, email: @user.email) %>
