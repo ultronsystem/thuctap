@@ -30,5 +30,4 @@ test:
   database: bookreviews
 
 production:
-  <<: *default
-  database: bookreviews
+  url: <%= ENV['DATABASE_URL'] %>

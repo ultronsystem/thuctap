@@ -2,9 +2,6 @@
 <div class="row">
   <div class="col-sm-3"></div>
 <div class="col-sm-6 sign-up">
-  <% if flash[:danger] %>
-    <span style="color: green"><%= flash[:danger] %></span>
-  <% end %>
   <%= form_for(:login, url: login_path, html: {class: "form-signup"}) do |f| %>
     <h1>Đăng Nhập</h1>
     <hr>

@@ -1,0 +1,5 @@
+i <%= @user.fullname %>,
+
+Chào mừng bạn đến với Hệ thống đánh gía sách văn học! Clink vào link bên dưới để kích hoạt tài khoản:
+
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>
