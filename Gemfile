@@ -19,7 +19,7 @@ gem "jquery-rails"
 gem "mini_magick", "4.7.0"
 gem "minitest", ">=5.10.3"
 gem "minitest-reporters", ">=1.1.19"
-gem "mysql2"
+gem "mysql2", '~> 0.3.18'
 gem "nokogiri", "1.8.1"
 gem "puma", "~> 3.7"
 gem "rails", "~> 5.1.4"
@@ -29,6 +29,8 @@ gem "sass-rails", "~> 5.0"
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
 gem "will_paginate", "3.1.6"
+gem "figaro"
+gem "blogit", github: "katanacode/blogit", branch: "master"
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'
