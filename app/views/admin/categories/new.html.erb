@@ -1,0 +1,33 @@
+<% provide :title, "Quản lý thể loại" %>
+<ol class = "breadcrumb">
+  <li class = "breadcrumb-item">
+    <%= link_to "Trang chủ", admin_root_path %>
+  </li>
+  <li class = "breadcrumb-item">
+    <%= link_to "Thể loại", admin_categories_path %>
+  </li>
+  <li class = "breadcrumb-item active">Thêm</li>
+</ol>
+<div class = "card mb-3">
+  <div class = "card-header">
+    <i class = "fa fa-plus-circle "></i>
+     Thêm thể loại
+  </div>
+  <div class = "card-body">
+    <%= form_for [:admin, @category] do |f| %>
+      <%= render "shared/error_messages", object: f.object %>
+      <div class = "form-group">
+        <div class = "col-md-6">
+          <%= f.label :name_cat, "Tên thể loại" %>
+          <%= f.text_field :name_cat, class: "form-control"%>
+        </div>
+      </div>
+      <div class = "form-group">
+        <div class = "col-md-6">
+          <%= f.submit "Thêm",class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+

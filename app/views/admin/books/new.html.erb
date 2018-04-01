@@ -1,0 +1,19 @@
+<% provide :title, "Thêm sách" %>
+<ol class = "breadcrumb">
+  <li class = "breadcrumb-item">
+    <%= link_to "Trang chủ", admin_root_path %>
+  </li>
+  <li class = "breadcrumb-item">
+    <%= link_to "Sách", admin_books_path %>
+  </li>
+  <li class = "breadcrumb-item active">Thêm</li>
+</ol>
+<div class = "card mb-3">
+  <div class = "card-header">
+    <i class = "fa fa-plus-circle "></i>
+    Thêm sách
+  </div>
+  <div class = "card-body">
+    <%= render "form" %>
+  </div>
+</div>
