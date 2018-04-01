@@ -8,3 +8,10 @@
     <p style="color:white;"><i>"Louisa May Alcott"</i></p>
   </div>
 </div>
+<div class="notify">
+  <% if flash[:warning] %>
+    <span style="color: green"><%= flash[:warning] %></span>
+  <% elsif flash[:info] %>
+    <span style="color: green"><%= flash[:info] %></span>
+  <% end %>
+</div>

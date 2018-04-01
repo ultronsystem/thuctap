@@ -8,15 +8,20 @@ class UsersController < ApplicationController
   def create
     @user = User.new user_params
     if @user.save
-      flash[:success] = "Đăng ký thành công!"
-      redirect_to login_path
+      @user.send_activation_email
+      flash[:info] = "Đăng ký tài khoản thành công! Xin vui lòng kiểm tra Email để kích hoạt tài khoản."
+      redirect_to root_url
     else
       render :new
     end
   end
 
-  def show
+  def index
+    @users = User.users_activated.paginate(page: params[:page])
+  end
 
+  def show
+    redirect_to root_url
   end
 
   private

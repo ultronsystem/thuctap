@@ -107,7 +107,7 @@ ActiveRecord::Schema.define(version: 20180316083705) do
     t.string "password_digest"
     t.string "remember_digest"
     t.string "activation_digest"
-    t.boolean "activated"
+    t.boolean "activated", default: false
     t.datetime "activated_at"
     t.string "reset_digest"
     t.datetime "reset_sent_at"
@@ -117,6 +117,9 @@ ActiveRecord::Schema.define(version: 20180316083705) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "activities", "users"
+  add_foreign_key "book_categories", "books"
+  add_foreign_key "book_categories", "categories"
   add_foreign_key "buy_requests", "users"
   add_foreign_key "comments", "reviews"
   add_foreign_key "comments", "users"
