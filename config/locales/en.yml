@@ -37,6 +37,13 @@ en:
         email: "Địa chỉ email"
         password: "Mật khẩu"
         password_confirmation: "Mật khẩu xác nhận"
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              blank: " không được trống."
+
   layouts:
     nav_bar:
       home: "Trang chủ"

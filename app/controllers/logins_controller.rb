@@ -6,13 +6,13 @@ class LoginsController < ApplicationController
     if user && user.authenticate(params[:login][:password])
       if user.activated?
         log_in user
-        params[:login][:remember_me] == '1' ? remember(user) : forget(user)
+        remember_status user
         redirect_back_or user
       else
         message  = "Tài khoản chưa được kích hoạt. "
-        message += "Vui lòng kiểm tra Email để kích hoạt tài khoản!"
+        message += "Kiểm tra email để kích hoạt tài khoản."
         flash[:warning] = message
-        redirect_to root_path
+        redirect_to root_url
       end
     else
       flash.now[:danger] = "Đăng nhập không thành công"

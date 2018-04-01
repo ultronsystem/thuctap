@@ -136,8 +136,6 @@ GEM
     faker (1.7.3)
       i18n (~> 0.5)
     ffi (1.9.23)
-    figaro (1.1.1)
-      thor (~> 0.14)
     fog-aws (2.0.0)
       fog-core (~> 1.38)
       fog-json (~> 1.0)
@@ -366,7 +364,6 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   config
   faker (= 1.7.3)
-  figaro
   fog-aws (= 2.0.0)
   guard (= 2.14.1)
   guard-minitest (= 2.4.6)

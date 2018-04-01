@@ -8,8 +8,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new user_params
     if @user.save
-      @user.send_activation_email
-      flash[:info] = "Đăng ký tài khoản thành công! Xin vui lòng kiểm tra Email để kích hoạt tài khoản."
+      UserMailer.account_activation(@user).deliver_now
+      flash[:info] = "Kiểm tra email để kích hoạt tài khoản."
       redirect_to root_url
     else
       render :new

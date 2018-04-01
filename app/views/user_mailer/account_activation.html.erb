@@ -1,5 +1,10 @@
-<p>Xin chào <%= @user.fullname %>,</p>
+<h1>Hệ thống đánh giá sách văn học</h1>
 
-<p>Vui lòng nhấn vào link bên dưới để kích hoạt tài khoản của bạn:</p>
+<p>Chào <%= @user.fullname %>,</p>
 
-<%= link_to "Kích hoạt tài khoản", edit_account_activation_url(@user.activation_token, email: @user.email) %>
+<p>
+Chào mừng bạn đến với Hệ thống đánh gía sách văn học! Clink vào link bên dưới để kích hoạt tài khoản:
+</p>
+
+<%= link_to "Kích hoạt tài khoản", edit_account_activation_url(@user.activation_token,
+                                                    email: @user.email) %>
