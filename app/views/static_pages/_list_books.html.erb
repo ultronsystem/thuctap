@@ -4,7 +4,7 @@
     <% @list_books.each do |book| %>
     <div class="w3-quarter custom-height">
       <%= link_to book_path(book.id) do %>
-        <%= image_tag("book.jpg")%>
+        <%= image_tag book.image.url %>
       <% end %>
       <%= load_star_rating(book_star(book)) %>
       <h3><%=link_to book.title, book_path(book.id) %></h3>

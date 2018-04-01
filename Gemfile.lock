@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/galetahub/ckeditor.git
+  revision: dc2cef2c2c3358124ebd86ca2ef2335cc898b41f
+  specs:
+    ckeditor (4.2.4)
+      orm_adapter (~> 0.5.0)
+      terrapin
+
+GIT
   remote: https://github.com/katanacode/blogit.git
   revision: 9bafe2aeac2c10fe2193087b81207eddf92133f4
   branch: master
@@ -87,6 +95,7 @@ GEM
       mime-types (>= 1.16)
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
+    climate_control (0.2.0)
     coderay (1.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -228,6 +237,7 @@ GEM
     notiffany (0.1.1)
       nenv (~> 0.1)
       shellany (~> 0.0)
+    orm_adapter (0.5.0)
     parallel (1.12.1)
     parser (2.5.0.5)
       ast (~> 2.4.0)
@@ -314,6 +324,13 @@ GEM
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
     shellany (0.0.1)
+    slim (3.0.9)
+      temple (>= 0.7.6, < 0.9)
+      tilt (>= 1.3.3, < 2.1)
+    slim-rails (3.1.1)
+      actionpack (>= 3.1)
+      railties (>= 3.1)
+      slim (~> 3.0)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -327,6 +344,9 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sqlite3 (1.3.13)
+    temple (0.8.0)
+    terrapin (0.6.0)
+      climate_control (>= 0.0.3, < 1.0)
     thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
@@ -361,6 +381,7 @@ DEPENDENCIES
   byebug
   capybara (~> 2.13)
   carrierwave (= 1.1.0)
+  ckeditor!
   coffee-rails (~> 4.2)
   config
   faker (= 1.7.3)
@@ -384,6 +405,7 @@ DEPENDENCIES
   rubocop (~> 0.51.0)
   sass-rails (~> 5.0)
   selenium-webdriver
+  slim-rails (= 3.1.1)
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3 (= 1.3.13)
