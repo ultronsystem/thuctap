@@ -1,0 +1,14 @@
+<% provide :title, t(".title") %>
+<div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:50px">
+   <div class = "w3-row-padding w3-padding">
+  <h2>Yêu cầu sách mới
+    <small class="pull-right">
+      <%= t ".small", count: @count_requests %>
+    </small>
+  </h2></div>
+  <hr class="soften"/>
+  <div class = "post-body">
+    <%= render "list_request" %>
+  </div>
+  <%= link_to "Thêm yêu cầu", new_user_buy_request_path(@user.id) %>
+</div>

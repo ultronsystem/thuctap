@@ -1,0 +1,32 @@
+<div class="mark_book w3-row-padding">
+  <%= form_tag book_user_book_path(@book.id, @user_book.id), method: "patch", remote: true do %>
+    <%= hidden_field_tag :status, @user_book.status %>
+    <%= hidden_field_tag :is_favorite, @user_book.is_favorite %>
+    <%= button_tag(type: "submit", class: "btn_mark", value: Settings.value_btn_like) do %>
+      <i class="fa fa-heart icon_mark<%= @user_book.is_favorite %>" aria-hidden="true" title="Bỏ yêu thích">
+      </i>
+    <% end %>
+    <% if @user_book.is_favorite == true %>
+      <span class="alert-success" >
+        Yêu thích
+      </span>
+    <% end %>
+    <%= button_tag(type: "submit", class: "btn_mark", value: Settings.value_btn_reading) do %>
+      <i class="fa fa-eye icon_mark<%= @user_book.status %>" aria-hidden="true" title="Hủy đang đọc"></i>
+    <% end %>
+    <% if @user_book.status == Settings.value_btn_reading %>
+      <span class="alert-success">
+        Đang đọc
+      </span>
+    <% end %>
+    <%= button_tag(type: "submit", class: "btn_mark", value: Settings.value_btn_read) do %>
+      <i class="fa fa-check-circle icon_mark<%= @user_book.status %>" aria-hidden="true" title="Hủy đã đọc"></i>
+      </i>
+    <% end %>
+    <% if @user_book.status == Settings.value_btn_read %>
+      <span class="alert-success">
+        Đã đọc
+      </span>
+    <% end %>
+  <% end %>
+</div>

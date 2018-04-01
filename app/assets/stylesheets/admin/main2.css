@@ -1,0 +1,121 @@
+.addBtn{
+  float:right;
+}
+.action_manage{
+  color: black;
+  margin: 0px 7px;
+}
+.edit:hover{
+  color: green;
+  text-decoration: none;
+}
+.delete:hover{
+  color: red;
+  text-decoration: none;
+}
+.center{
+  text-align: center;
+}
+.notify{
+  color: green;
+}
+.pagination a{
+  margin: 0 4px;
+}
+.shopBtn{
+  margin-top: 15px;
+}
+.notify_success{
+  color: green;
+}
+.notify_danger{
+  color: red;
+}
+.content_table{
+  padding: 15px 0px;
+  margin: 0% 1%;
+  width: 98%;
+}
+.post-body table{
+  width: 100%;
+}
+.post-body table td,.post-body table caption{
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.05);
+  padding: 10px;
+  text-align: center;
+  vertical-align: top
+}
+.post-body table th{
+  background: #808080;
+  color: #fff;
+  border: 1px solid rgba(0,0,0,0.05);
+  border-bottom: 0;
+  padding: 10px;
+  text-align: center;
+  vertical-align: top
+}
+.post-body table.tr-caption-container{
+  border: 1px solid rgba(0,0,0,0.14);
+  margin: 0;
+}
+.post-body th{
+  font-weight: 700;
+}
+.post-body table caption{
+  border: none;
+  font-style: italic;
+}
+.post-body td, .post-body th{
+  vertical-align: top;
+  text-align: left;
+  font-size: 14px;
+  border: 1px solid #97b28e;
+}
+.post-body th{}
+.post-body th:hover{
+  color: #fff;
+}
+.post-body td a{
+  color: #444;
+}
+.post-body td a:hover{
+  color: #cf4d35;
+}
+.post-body table.tr-caption-container td{
+  border: 0;
+  padding: 8px;
+  background: #fff;
+  line-height: 17px;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 700;
+  color: #000;
+}
+.post-body table.tr-caption-container, .post-body table.tr-caption-container img, .post-body img{
+  max-width: 100%;
+  height: auto;
+}
+.post-body li{
+  list-style-type: square;
+}
+.post-body td.tr-caption{
+  color: #666;
+  font-size: 80%;
+  padding: 0px 8px 8px!important;
+}
+.error_explanation{
+  color: red;
+  ul{
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+.field_with_errors{
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+}

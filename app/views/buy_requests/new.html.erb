@@ -1,0 +1,23 @@
+<% provide :title, t(".title") %>
+<div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:50px">
+     <div class = "w3-row-padding w3-padding">
+<h3>Yêu cầu sách mới</h3>
+  <%= form_for [current_user, @buy_request], html: {class: "w3-container"} do |f| %>
+    <%= render "shared/error_messages", object: @buy_request %>
+    <p>
+      <%= f.label :title, "Tiêu đề", class: "control-label" %>
+        <%= f.text_field :title, class: "w3-input" %>
+      </p>
+      <p>
+      <%= f.label :author,"Tác giả", class: "control-label" %>
+        <%= f.text_field :author, class: "w3-input" %>
+      </p>
+    <%= hidden_field_tag :user_id, current_user.id %>
+      <div class="controls">
+        <%= f.submit "Thêm", class: "w3-btn w3-blue" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+</div>
+
