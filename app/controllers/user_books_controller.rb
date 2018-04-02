@@ -1,18 +1,18 @@
   class UserBooksController < ApplicationController
   before_action :find_book
-  before_action -> {check_login_or_save_url(book_path @book.id)}
+  before_action :logged_in_user
 
   def create
     if params[:button] == "like"
-      @user_book = UserBook.new(user_id: current_user.id, book_id: @book.id, is_favorite: true)
+      @user_book= UserBook.new(user_id: current_user.id, book_id: @book.id, is_favorite: true)
     elsif params[:button] == "read"
-      @user_book = UserBook.new(user_id: current_user.id, book_id: @book.id, status: 2)
+      @user_book= UserBook.new(user_id: current_user.id, book_id: @book.id, status: 2)
     else
-      @user_book = UserBook.new(user_id: current_user.id, book_id: @book.id, status: 1)
+      @user_book= UserBook.new(user_id: current_user.id, book_id: @book.id, status: 1)
     end
     if @user_book.save
       respond_to do |format|
-        format.html{redirect_to @user_book, @book}
+        format.html {redirect_to @user_book, @book}
         format.js
       end
     else
@@ -21,13 +21,33 @@
     end
   end
 
-  def update
+    def update
     @user_book = UserBook.find_by id: params[:id]
     is_favorite = params[:is_favorite]
     status = params[:status]
-    if @user_book.update_attributes(is_favorite: is_favorite, status: status)
+    if params[:button] == "like"
+      is_favorite = mark_like is_favorite
+    else
+      status = mark_read status, params[:button]
+    end
+    if @user_book.update_attribute(:is_favorite, is_favorite) && @user_book.update_attribute(:status, status)
+      if is_favorite == params[:is_favorite]
+        if status == :read
+          @notify_mark = "Đánh dấu sách đã đọc thành công."
+        elsif status == :reading
+          @notify_mark = "Đánh dấu sách đang đọc thành công."
+        else
+          @notify_mark = "Hủy đánh dấu sách thành công."
+        end
+      else
+        if is_favorite == true
+          @notify_mark = "Đánh dấu sách ưa thích thành công."
+        else
+          @notify_mark = "Hủy đánh dấu sách ưa thích thành công."
+        end
+      end
       respond_to do |format|
-        format.html{redirect_to @user_book, @book}
+        format.html {redirect_to @user_book, @book}
         format.js
       end
     else
@@ -51,17 +71,9 @@
 
   def mark_read value_params_status, value_params_button
     if value_params_button == "read"
-      if value_params_status != "read"
-        return :read, (t ".read_book", book: @book.title), "read"
-      else
-        return :no_mark,(t ".unread_book", book: @book.title), "unread"
-      end
+      value_params_status != "read" ? :read : :no_mark
     else
-      if value_params_status != "reading"
-        return :reading, (t ".reading_book", book: @book.title), "reading"
-      else
-        return :no_mark, (t ".unreading_book", book: @book.title), "unreading"
-      end
+      value_params_status != "reading" ? :reading : :no_mark
     end
   end
 
