@@ -1,0 +1,28 @@
+<table class="w3-table-all">
+  <thead>
+    <tr class="w3-red">
+      <th>Tiêu đề</th>
+      <th>Tác giả</th>
+      <th>Ngày yêu cầu</th>
+      <th>Trạng thái</th>
+      <th>Hủy yêu cầu</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if current_user && @buy_requests.any? %>
+      <% @buy_requests.each do |request| %>
+        <tr>
+          <td><%= request.title %></td>
+          <td><%= request.author %></td>
+          <td><%= request.created_at.strftime("%d/%m/%Y") %></td>
+          <%= load_status request.status %>
+          <td>
+            <%= link_to "Xóa", user_buy_request_path(@user.id,request.id),
+              method: :delete, data: {confirm: "Xác nhận"} %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @buy_requests, id: "request-paginate" %>

@@ -7,16 +7,16 @@
             <%= link_to find_user_review(review.user_id), user_path(review.user_id) %>
           </strong>
           <% if review_update? review %>
-            <%= t ".h5_update", time: time_ago_in_words(review.updated_at) %>
+            <%= t "h5_update", time: time_ago_in_words(review.updated_at) %>
           <% else %>
-            <%= t ".h5_create", time: time_ago_in_words(review.created_at) %>
+            <%= t "h5_create", time: time_ago_in_words(review.created_at) %>
           <% end %>
           <% if logged_in? && correct_user_review?(review) %>
-            <span class="action_buttons">
-              <%= link_to t(".edit"), edit_book_review_path(review.book, review) %>
+            <span style="float: right;">
+              <%= link_to "Cập nhập", edit_book_review_path(review.book, review) %>
               |
-              <%= link_to t(".del"), book_review_path(review.book, review),
-              method: :delete, data: {confirm: t(".confirm")} %>
+              <%= link_to "Xóa", book_review_path(review.book, review),
+              method: :delete, data: {confirm: "Xác nhận"} %>
             </span>
           <% end %>
         </div>
@@ -24,19 +24,18 @@
           <div>
             <%= load_star_rating(review.rate) %>
           </div>
-          <div><%= review.content %></div>
+          <div><%= review.content.html_safe %></div>
           <hr class="soft"/>
           <div>
-            <%= link_to t(".like"), "#" %>
-            <%= link_to t(".detail"), book_review_path(@book.id, review.id) %>
+            <%= link_to "Chi tiết", book_review_path(@book.id, review.id) %>
           </div>
         </div>
       </div>
+      <%= will_paginate @reviews, id: "paginate" %>
     <% end %>
   <% else %>
     <div>
       <p>Không có bài đánh giá cho quyển sách này.</p>
     </div>
   <% end %>
-  <%= will_paginate @reviews, id: "paginate" %>
 </div>

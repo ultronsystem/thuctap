@@ -23,12 +23,12 @@
           <% end %>
         </ul>
       </li>
-        <li><%= link_to t(".request"), '#'%></li>
+        <li><%= link_to t(".request"), request_books_index_path%></li>
       </ul>
-      <form class="navbar-form navbar-left" action="/action_page.php">
+      <%= form_tag books_path, class: "navbar-form navbar-left",method: "get" do %>
       <div class="form-group">
-          <input type="text" class="form-control " placeholder="Search">
-      </div>
+          <%= text_field_tag :search, nil, placeholder: "Search", class: "form-control" %>
+        </div>
       <div class="btn-group">
         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Tìm kiếm</button>
         <ul class="dropdown-menu">
@@ -36,7 +36,7 @@
             <li><%= submit_tag t(".submit_author"), class: "btn btn-default btn-menu", name: "search_for" %></li>
         </ul>
       </div>
-      </form>
+     <% end %>
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
           <li>

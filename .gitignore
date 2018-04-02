@@ -50,4 +50,10 @@ bower.json
 /config/environments/*.local.yml
 /public/uploads
 
+<<<<<<< HEAD
 config/application.yml
+=======
+config/settings.local.yml
+config/settings/*.local.yml
+config/environments/*.local.yml
+>>>>>>> a73e294c2bdcfe0339dda87990d4e9c2ea45a97f

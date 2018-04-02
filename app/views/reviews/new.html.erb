@@ -1,27 +1,33 @@
-<% provide :title, t(".title") %>
-<div>
-  <h2><%= t ".h2", book: @book.title %></h2>
-  <%= form_for [@book, @review], html: {class: "form-horizontal"}, method: :post do |f| %>
+<% provide :title, "Đánh giá sách" %>
+<div class="w3-main w3-content w3-padding" style="max-width:1200px">
+ <div class = "w3-row-padding w3-padding">
+  <h2>Tiêu đề: <%= @book.title %></h2>
+  </div>
+  <div class = "w3-row-padding w3-padding">
+  <%= form_for [@book, @review], html: {class: "review form-horizontal"}, method: :post do |f| %>
     <%= render "shared/error_messages", object: @review %>
-    <div class = "control-group">
-      <%= f.label :rate, t(".label") %>
+    <div class = "w3-row-padding w3-padding">
+      <%= f.label :rate, "Đánh giá" %>
+      <br>
       <fieldset class = "rate">
         <% Settings.max_star.downto Settings.min_star do |i| %>
           <%= f.radio_button :rate, i, id: "star#{i}_" %>
-          <%= label "star#{i}","", title: t(".title#{i}"), class: "full" %>
+          <%= label "star#{i}","", class: "full" %>
 
           <%= f.radio_button :rate, i - Settings.half, id: "star#{i - Settings.full}half_" %>
-          <%= label "star#{i - Settings.full}half", "", title: t(".title#{i - Settings.full}half"), class: "half" %>
+          <%= label "star#{i - Settings.full}half", "", class: "half" %>
         <% end %>
       </fieldset>
     </div>
-    <div class = "control-group">
-      <%= f.label :content, t(".content") %>
-      <%= f.text_area :content, require: true, class: "ta-review" %>
+    <div class = "w3-row-padding w3-padding">
+      <%= f.label :content, "Nội dung" %>
+      <%= f.cktext_area :content, class: "ta-review" %>
     </div>
-    <div class = "control-group">
-      <%= f.button t(".title"), class: "shopBtn" %>
+    <div class = "w3-row-padding w3-padding">
+      <%= f.button "Đánh giá", class: "shopBtn" %>
     </div>
     <%= hidden_field_tag :book_id, @book.id %>
   <% end %>
 </div>
+</div>
+

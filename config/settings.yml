@@ -1,0 +1,83 @@
+fullname:
+  max_size: 80
+email:
+  max_size: 80
+users:
+  page_size: 10
+comments:
+  page_size: 5
+books:
+  per_page: 9
+  review_per_page: 2
+password:
+  min_size: 6
+  reset_expired: 2
+sessions:
+  remember: "1"
+cart_count: 2
+cart_price: "$448.42"
+min_rate: 0
+max_rate: 5
+rating:
+  star5: 5
+  star45: 4.5
+  star4: 4
+  star35: 3.5
+  star3: 3
+  star25: 2.5
+  star2: 2
+  star15: 1.5
+  star1: 1
+  starhalf: 0.5
+numstar: 5
+round: 2
+
+max_star: 5
+min_star: 1
+half: 0.5
+full: 1
+read: 2
+reading: 1
+status_read: "2"
+status_reading: "1"
+value_btn_like: "like"
+value_btn_reading: "reading"
+value_btn_read: "read"
+favorite: "true"
+not_favorite: "false"
+buy_request:
+  per_page: 5
+
+request_waiting: 0
+request_waiting_in_words: "Đang chờ"
+request_success: 1
+request_success_in_words: "Đã duyệt"
+request_cancel_in_words: "Từ chối"
+
+admin_categories_per_page: 5
+admin_parent_category: 0
+max_name_cat: 100
+parent_cat: 0
+parent_name: "Thể loại cha"
+step: 0
+step_plus: 1
+childs_name: "> "
+
+action_follow: "follow"
+action_unfollow: "unfollow"
+add_review: "add_review"
+edit_review: "edit_review"
+destroy_review: "del_review"
+action_favorite: "favorite"
+favorite_false: false
+action_unfavorite: "unfavorite"
+action_read: "read"
+action_reading: "reading"
+action_unreading: "unreading"
+action_unread: "unread"
+action_comment: "add_comment"
+action_edit_comment: "edit_comment"
+admin_books_pẻ_page: 10
+number_of_pages_min: 1
+number_of_pages: 0
+summary: 80
