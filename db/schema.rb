@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20180401082635) do
 
-  create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint "user_id"
     t.integer "type_id"
     t.string "type_activity"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20180401082635) do
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
 
-  create_table "book_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "book_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint "category_id"
     t.bigint "book_id"
     t.datetime "created_at", null: false
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20180401082635) do
     t.index ["category_id"], name: "index_book_categories_on_category_id"
   end
 
-  create_table "books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "title"
     t.string "author"
     t.datetime "publish_date"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20180401082635) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "buy_requests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "buy_requests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint "user_id"
     t.integer "status", default: 0
     t.string "title"
@@ -52,14 +52,14 @@ ActiveRecord::Schema.define(version: 20180401082635) do
     t.index ["user_id"], name: "index_buy_requests_on_user_id"
   end
 
-  create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name_cat"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name_cat"], name: "index_categories_on_name_cat", unique: true
   end
 
-  create_table "ckeditor_assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "ckeditor_assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "data_file_name", null: false
     t.string "data_content_type"
     t.integer "data_file_size"
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 20180401082635) do
     t.index ["type"], name: "index_ckeditor_assets_on_type"
   end
 
-  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint "user_id"
     t.bigint "review_id"
     t.text "content"
@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 20180401082635) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "relationships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "relationships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer "follower_id"
     t.integer "followed_id"
     t.datetime "created_at", null: false
@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 20180401082635) do
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
-  create_table "reviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "reviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint "user_id"
     t.bigint "book_id"
     t.text "content"
@@ -102,7 +102,7 @@ ActiveRecord::Schema.define(version: 20180401082635) do
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
-  create_table "user_books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "user_books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint "user_id"
     t.bigint "book_id"
     t.boolean "is_favorite", default: false
@@ -113,7 +113,7 @@ ActiveRecord::Schema.define(version: 20180401082635) do
     t.index ["user_id"], name: "index_user_books_on_user_id"
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "fullname"
     t.string "email"
     t.string "password_digest"

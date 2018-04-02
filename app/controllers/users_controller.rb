@@ -16,8 +16,12 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
+  def index
+    @users = User.users_activated.paginate(page: params[:page])
+  end
 
+  def show
+    redirect_to root_url
   end
 
   private

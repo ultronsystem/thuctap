@@ -19,7 +19,7 @@ gem "jquery-rails"
 gem "mini_magick", "4.7.0"
 gem "minitest", ">=5.10.3"
 gem "minitest-reporters", ">=1.1.19"
-gem "mysql2"
+gem "mysql2", '~> 0.3.18'
 gem "nokogiri", "1.8.1"
 gem "puma", "~> 3.7"
 gem "rails", "~> 5.1.4"
@@ -34,6 +34,7 @@ gem 'ckeditor', github: 'galetahub/ckeditor'
 gem 'slim-rails', '3.1.1'
 
 group :development, :test do
+  gem 'sqlite3', '1.3.13'
   gem "byebug", platforms: %i[mri mingw x64_mingw]
   gem "capybara", "~> 2.13"
   gem "guard", "2.14.1"
@@ -47,6 +48,10 @@ group :development do
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
   gem "web-console", ">= 3.3.0"
+end
+
+group :production do
+  gem 'pg', '0.20.0'
 end
 
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]

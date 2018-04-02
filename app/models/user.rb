@@ -3,7 +3,7 @@ class User < ApplicationRecord
   before_save   :downcase_email
   before_create :create_activation_digest
 
-   has_many :active_relationships, class_name: Relationship.name, foreign_key: "follower_id", dependent:   :destroy
+  has_many :active_relationships, class_name: Relationship.name, foreign_key: "follower_id", dependent:   :destroy
   has_many :passive_relationships, class_name: Relationship.name, foreign_key: "followed_id", dependent:   :destroy
   has_many :following, through: :active_relationships,  source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
@@ -21,7 +21,13 @@ class User < ApplicationRecord
   format: { with: VALID_EMAIL_REGEX, message: "không đúng định dạng" },
   uniqueness: { case_sensitive: false, message: "đã được sử dụng để đăng ký tài khoản" }
   has_secure_password
+  validates :password, length: {minimum: 6, message: "quá ngắn (tối thiểu 6 ký tự)"}, allow_nil: true
+  validates_associated :buy_requests
+  validates_associated :user_books
+  validates_associated :reviews
+  validates_associated :comments
 
+  scope :users_activated, ->{where("activated = true")}
   def activate
     update_columns(activated: true, activated_at: Time.zone.now)
   end
@@ -37,15 +43,6 @@ class User < ApplicationRecord
     end
   end
 
-  def downcase_email
-      self.email = email.downcase
-    end
-
-  def create_activation_digest
-      self.activation_token  = User.new_token
-      self.activation_digest = User.digest(activation_token)
-  end
-
   def remember
     self.remember_token = User.new_token
     update_attribute :remember_digest, User.digest(remember_token)
@@ -59,6 +56,21 @@ class User < ApplicationRecord
 
   def forget
     update_attribute :remember_digest, nil
+  end
+
+  def send_activation_email
+    UserMailer.account_activation(self).deliver_now
+  end
+
+  private
+
+  def downcase_email
+    self.email = email.downcase
+  end
+
+  def create_activation_digest
+    self.activation_token  = User.new_token
+    self.activation_digest = User.digest(activation_token)
   end
 
   def follow other_user
