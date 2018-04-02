@@ -13,7 +13,7 @@ default: &default
 development:
   <<: *default
   username: root
-  password: zicklog369
+  password: "zicklog369"
   host: 127.0.0.1
   port: 3306
   database: bookreviews

@@ -3,7 +3,7 @@ class User < ApplicationRecord
   before_save   :downcase_email
   before_create :create_activation_digest
 
-   has_many :active_relationships, class_name: Relationship.name, foreign_key: "follower_id", dependent:   :destroy
+  has_many :active_relationships, class_name: Relationship.name, foreign_key: "follower_id", dependent:   :destroy
   has_many :passive_relationships, class_name: Relationship.name, foreign_key: "followed_id", dependent:   :destroy
   has_many :following, through: :active_relationships,  source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
@@ -21,6 +21,11 @@ class User < ApplicationRecord
   format: { with: VALID_EMAIL_REGEX, message: "không đúng định dạng" },
   uniqueness: { case_sensitive: false, message: "đã được sử dụng để đăng ký tài khoản" }
   has_secure_password
+  validates :password, length: {minimum: 6, message: "quá ngắn (tối thiểu 6 ký tự)"}, allow_nil: true
+  validates_associated :buy_requests
+  validates_associated :user_books
+  validates_associated :reviews
+  validates_associated :comments
 
   scope :users_activated, ->{where("activated = true")}
   def activate
