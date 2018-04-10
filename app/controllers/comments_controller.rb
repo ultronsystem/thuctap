@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :find_review
   before_action :find_comment, only: %i(destroy edit update)
+  before_action :correct_user,   only: [:edit, :update]
   before_action -> {check_login_or_save_url(book_review_path params[:book_id], params[:review_id])}
 
   def new; end
@@ -66,4 +67,9 @@ class CommentsController < ApplicationController
     @comment = Comment.find_by id: params[:id]
     redirect_to root_url if @comment.nil?
   end
+
+  def correct_user
+      @user = User.find_by id: @comment.user_id
+      redirect_to(root_url) unless current_user?(@user)
+    end
 end

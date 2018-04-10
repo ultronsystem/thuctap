@@ -1,0 +1,32 @@
+<% provide :title, t(".title") %>
+<div class="row">
+  <div class="col-sm-3"></div>
+<div class="col-sm-6 sign-up">
+  <%= form_for @user, html: {class: "form-signup"} do |f| %>
+    <h1>Cập nhập thông tin</h1>
+    <hr>
+    <%= render "shared/error_messages", object: f.object %>
+      <div class="gravatar_edit">
+      <%= gravatar_for @user %>
+      <a href="http://gravatar.com/emails" target="_blank">Đổi ảnh đại diện</a>
+      </div>
+      <%= f.label :fullname, "Họ tên:" %>
+        <%= f.text_field :fullname %>
+
+      <%= f.label :password, "Mật khẩu:" %>
+        <%= f.password_field :password %>
+
+      <%= f.label :password_confirmation, "Xác nhận mật khẩu:" %>
+        <%= f.password_field :password_confirmation %>
+
+
+      <div class="clearfix">
+        <%= f.submit "Cập nhập", class: "signupbtn" %>
+      </div>
+
+
+  <% end %>
+</div>
+<div class="col-sm-3"></div>
+<div style="clear:both"></div>
+</div>

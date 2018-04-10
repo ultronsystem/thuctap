@@ -1,25 +1,41 @@
-<% provide :title, t(".title") %>
-<h3><%= t ".h3_update" %></h3>
-<hr class="soft"/>
-<div class="col-md-8 col-md-offset-4">
-  <%= form_for @user, url: admin_user_path(@user.id), html: {class: "form-horizontal"} do |f| %>
+<% provide :title, @user.fullname %>
+<ol class = "breadcrumb">
+  <li class = "breadcrumb-item">
+    <%= link_to "Trang chủ", admin_root_path %>
+  </li>
+  <li class = "breadcrumb-item">
+    <%= link_to "Tài khoản", admin_users_path %>
+  </li>
+  <li class = "breadcrumb-item active">Cập nhập</li>
+</ol>
+<div class = "card mb-3">
+  <div class = "card-header">
+    <i class = "fa fa-plus-circle "></i>
+    Cập nhập tài khoản
+  </div>
+  <div class = "card-body">
+     <%= form_for @user, url: admin_user_path(@user.id) do |f| %>
     <%= render "shared/error_messages", object: f.object %>
-    <div class = "control-group">
-      <%= f.label :fullname, t(".fullname"), class: "control-label" %>
-      <div class ="controls">
-        <%= f.text_field :fullname %>
+
+    <div class = "form-group">
+      <div class = "col-md-6">
+        <%= f.label :fullname, "Họ và tên"%>
+        <%= f.text_field :fullname, class: "form-control" %>
       </div>
     </div>
-    <div class = "control-group">
-      <%= f.label :email, class: "control-label" %>
-      <div class ="controls">
-        <%= f.text_field :email %>
+
+    <div class = "form-group">
+      <div class = "col-md-6">
+         <%= f.label :password, "Mật khẩu"%>
+        <%= f.password_field :password, class: "form-control" %>
       </div>
     </div>
-    <div class="control-group">
-      <div class="controls">
-        <%= f.submit t(".btn_update"), class: "exclusive shopBtn" %>
-      </div>
+
+   <div class = "form-group">
+    <div class = "col-md-6">
+      <%= f.submit "Cập nhập",class: "btn btn-primary" %>
     </div>
+  </div>
+</div>
   <% end %>
 </div>

@@ -1,24 +1,23 @@
-<% provide :title, t("admin.users.title") %>
+<% provide :title, "Danh sách tài khoản" %>
 <ol class = "breadcrumb">
   <li class = "breadcrumb-item">
-    <%= link_to t("admin.users.home"), admin_root_path %>
+    <%= link_to "Trang chủ", admin_root_path %>
   </li>
-  <li class = "breadcrumb-item active"><%= t "admin.users.manage_users" %></li>
+  <li class = "breadcrumb-item active">Tài khoản</li>
 </ol>
 <div class = "card mb-3">
   <div class = "card-header">
     <i class = "fa fa-list-alt "></i>
-    <%= t "admin.users.list_users" %>
-    <%= link_to t("admin.users.add_user"), new_admin_user_path, class: "fa fa-plus addBtn" %>
+    Danh sách tài khoản
   </div>
   <div class = "card-body">
     <% if @users.any? %>
       <table class="table" id="table_users">
         <thead>
           <tr>
-            <th><%= t "admin.users.th_name" %></th>
-            <th><%= t "admin.users.th_email" %></th>
-            <th class="center"><%= t "admin.users.th_action" %></th>
+            <th>Họ và Tên</th>
+            <th>Email</th>
+            <th class="center">Chức năng</th>
           </tr>
         </thead>
         <tbody>
@@ -26,7 +25,7 @@
         </tbody>
       </table>
     <% else %>
-      <p class="notify"><%= t "admin.users.empty" %></p>
+      <p class="notify">Không có tài khoản nào</p>
     <% end %>
   </div>
 </div>

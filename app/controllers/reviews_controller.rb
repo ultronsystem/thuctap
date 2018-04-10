@@ -3,6 +3,7 @@ class ReviewsController < ApplicationController
   before_action :find_book
   before_action :check_review, only: :create
   before_action :find_review, except: %i(new create)
+    before_action :correct_user,   only: [:edit, :update]
 
   def new
     @review = @book.reviews.build
@@ -24,7 +25,8 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit;
+  debugger end
 
   def update
     if @review.update_attributes review_params
@@ -81,4 +83,8 @@ class ReviewsController < ApplicationController
     @comments = review.comments.paginate page: params[:page], per_page: Settings.comments.page_size
     return @notify_comment_empty = t(".notify_comment_empty") if @comments.empty?
   end
+  def correct_user
+      @user = User.find_by id: @review.user_id
+      redirect_to(root_url) unless current_user?(@user)
+    end
 end

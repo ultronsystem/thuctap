@@ -24,7 +24,7 @@
           <div>
             <%= load_star_rating(review.rate) %>
           </div>
-          <div><%= review.content.html_safe %></div>
+          <div class="review-content"><%= review.content.html_safe %></div>
           <hr class="soft"/>
           <div>
             <%= link_to "Chi tiết", book_review_path(@book.id, review.id) %>

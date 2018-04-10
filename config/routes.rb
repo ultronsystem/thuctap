@@ -30,5 +30,6 @@ Rails.application.routes.draw do
     resources :users
     resources :categories
     resources :books, except: :show
+    resources :buy_requests
   end
 end

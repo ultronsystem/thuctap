@@ -1,7 +1,7 @@
 <% provide :title, @book.title %>
-<div class="show_review">
-  <h2>
-    <%= link_to @book.title, @book %>
+<div class="w3-main w3-content w3-padding" style="max-width:1200px">
+ <div class = "w3-row-padding w3-padding">
+  <h2>Tiêu đề: <%= link_to @book.title, @book %>
     <br/>
     <small>
       <%= t(".by", fullname: link_to(find_user_review(@review.user_id), user_path(@review.user_id))).html_safe %>
@@ -12,9 +12,13 @@
         <%= @review.updated_at.strftime("%d/%m/%Y") %>
     </small>
   </h2>
-  <%= @review.content %>
+  </div>
+  <div class = "w3-row-padding w3-padding">
+    <%= @review.content.html_safe %>
+  </div>
   <hr class="soft"/>
-  <div>
+  <div class="w3-row-padding w3-padding">
     <%= render "comments/comment" %>
   </div>
 </div>
+

@@ -68,6 +68,9 @@ en:
   buy_requests:
     index:
       small: "%{count} yêu cầu"
+  reviews:
+    show:
+      by: "Đánh giá bởi: %{fullname}"
 
   datetime:
     distance_in_words:

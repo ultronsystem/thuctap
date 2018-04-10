@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  before_action :load_user, only: :show
-
+  before_action :load_user, only: %i(show edit)
   def new
     @user = User.new
   end
@@ -9,7 +8,7 @@ class UsersController < ApplicationController
     @user = User.new user_params
     if @user.save
       UserMailer.account_activation(@user).deliver_now
-      flash[:info] = "Bạn đã đăng ký thành công. Kiểm tra email để kích hoạt tài khoản."
+      flash[:success] = "Đăng ký thành công. Kiểm tra email để kích hoạt tài khoản"
       redirect_to root_url
     else
       render :new
@@ -21,7 +20,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    redirect_to root_url
+    @favorite = Book.favorite_book(@user.id).paginate(page: params[:page], per_page: 5)
+    @history = Book.history_book(@user.id).paginate(page: params[:page], per_page: 5)
   end
 
   private
@@ -37,3 +37,4 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 end
+

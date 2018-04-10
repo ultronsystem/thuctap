@@ -62,6 +62,18 @@ class User < ApplicationRecord
     UserMailer.account_activation(self).deliver_now
   end
 
+  def following? other_user
+    following.include? other_user
+  end
+
+   def follow other_user
+    following << other_user
+  end
+
+  def unfollow other_user
+    following.delete other_user
+  end
+
   private
 
   def downcase_email
@@ -71,17 +83,5 @@ class User < ApplicationRecord
   def create_activation_digest
     self.activation_token  = User.new_token
     self.activation_digest = User.digest(activation_token)
-  end
-
-  def follow other_user
-    following << other_user
-  end
-
-  def unfollow other_user
-    following.delete other_user
-  end
-
-  def following? other_user
-    following.include? other_user
   end
 end

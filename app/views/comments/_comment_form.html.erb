@@ -2,9 +2,9 @@
 <%= form_for [@book, @review, @review.comments.build], html: {class: "form-horizontal content_cmt"},
   method: :post do |f| %>
   <div class = "control-group">
-    <%= f.text_area :content, require: true, class: "ta-review cmt" %>
+    <%= f.text_area :content, require: true, cols: 100, class: "ta-review cmt" %>
   </div>
   <div class = "control-group">
-    <%= f.button "Post", class: "shopBtn" %>
+    <%= f.button "Đăng", class: "shopBtn" %>
   </div>
 <% end %>

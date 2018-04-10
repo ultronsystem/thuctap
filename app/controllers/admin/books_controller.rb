@@ -16,7 +16,7 @@ module Admin
         params[:book][:category_ids].each do |id_cat|
           @book.book_categories << BookCategory.new(category_id: id_cat) if id_cat.present?
         end
-        flash[:sucess] = t ".add_success"
+        flash[:sucess] = "Thêm thành công"
         redirect_to admin_books_path
       else
         render :new
@@ -31,7 +31,7 @@ module Admin
         params[:book][:category_ids].each do |id_cat|
           @book.book_categories << BookCategory.new(category_id: id_cat) if id_cat.present?
         end
-        flash[:sucess] = t ".edit_success"
+        flash[:sucess] = "Cập nhập thành công"
         redirect_to admin_books_path
       else
         render :edit
@@ -40,9 +40,9 @@ module Admin
 
     def destroy
       if @book.destroy
-        flash[:success] = t ".del_success"
+        flash[:success] = "Xóa thành công"
       else
-        flash[:danger] = t ".del_error"
+        flash[:danger] = "Xóa không thành công"
       end
       redirect_to admin_books_path
     end
@@ -56,7 +56,7 @@ module Admin
     def find_book
       @book = Book.find_by id: params[:id]
       return if @book
-      flash[:danger] = t ".book_not_found"
+      flash[:danger] = "Không tìm thấy sách"
       redirect_to admin_books_path
     end
   end

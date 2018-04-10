@@ -4,7 +4,7 @@
 
   def create
     if params[:button] == "like"
-      @user_book= UserBook.new(user_id: current_user.id, book_id: @book.id, is_favorite: true)
+      @user_book = UserBook.new(user_id: current_user.id, book_id: @book.id, is_favorite: true)
     elsif params[:button] == "read"
       @user_book= UserBook.new(user_id: current_user.id, book_id: @book.id, status: 2)
     else

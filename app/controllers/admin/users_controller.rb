@@ -3,7 +3,7 @@ module Admin
     before_action :find_user, only: %i(edit update destroy)
 
     def index
-      @users = User.list_users.paginate page: params[:page], per_page: Settings.users.page_size
+      @users = User.paginate page: params[:page], per_page: Settings.users.page_size
     end
 
     def new
@@ -24,7 +24,7 @@ module Admin
 
     def update
       if @user.update_attributes user_params
-        flash[:success] = t ".update_success"
+        flash[:success] = "Cập nhập thành công"
         redirect_to admin_users_path
       else
         render :edit
@@ -33,9 +33,9 @@ module Admin
 
     def destroy
       if @user.destroy
-        flash[:success] = t ".del_success"
+        flash[:success] = "Xóa thành công"
       else
-        flash[:danger] = t ".del_danger"
+        flash[:danger] = "Xóa thất bại"
       end
       redirect_to admin_users_path
     end
@@ -49,7 +49,7 @@ module Admin
     def find_user
       @user = User.find_by id: params[:id]
       return if @user
-      flash[:danger] = t "admin.users.not_found_user"
+      flash[:danger] = "Không tìm thấy tài khoản"
       redirect_to admin_users_path
     end
   end

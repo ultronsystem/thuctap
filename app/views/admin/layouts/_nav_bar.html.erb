@@ -6,33 +6,21 @@
     <div class = "collapse navbar-collapse" id = "navbarResponsive">
       <ul class = "navbar-nav navbar-sidenav" id = "exampleAccordion">
         <li class = "nav-item" data-toggle = "tooltip" data-placement = "right">
-          <%= link_to admin_root_path, class: "nav-link" do %>
-            <i class = "fa fa-fw fa-dashboard"></i>
-            <span class = "nav-link-text">Trang chủ</span>
-          <% end %>
-        </li>
-        <li class = "nav-item" data-toggle = "tooltip" data-placement = "right">
           <%= link_to admin_books_path, class: "nav-link" do %>
-            <i class = "fa fa-fw fa-area-chart"></i>
+            <i class = "fa fa-fw fas fa-book"></i>
             <span class = "nav-link-text">Quản lý sách</span>
           <% end %>
         </li>
         <li class = "nav-item" data-toggle = "tooltip" data-placement = "right">
           <%= link_to admin_categories_path, class: "nav-link" do %>
-            <i class = "fa fa-fw fa-area-chart"></i>
+            <i class = "fa fa-fw fa-list-alt"></i>
             <span class = "nav-link-text">Quản lý thể loại sách</span>
           <% end %>
         </li>
         <li class = "nav-item" data-toggle = "tooltip" data-placement = "right">
           <%= link_to admin_users_path, class: "nav-link" do %>
-            <i class = "fa fa-fw fa-area-chart"></i>
+            <i class = "fa fa-fw fa-user"></i>
             <span class = "nav-link-text">Quản lý tài khoản</span>
-          <% end %>
-        </li>
-        <li class = "nav-item" data-toggle = "tooltip" data-placement = "right">
-          <%= link_to admin_users_path, class: "nav-link" do %>
-            <i class = "fa fa-fw fa-area-chart"></i>
-            <span class = "nav-link-text">Quản lý yêu cầu</span>
           <% end %>
         </li>
       </ul>
@@ -50,7 +38,7 @@
         <li class = "nav-item">
           <%= link_to logout_path, method: :delete, class: "nav-link", data: {toggle: "modal",target: "#exampleModal"} do %>
             <%= content_tag :i, "", class: "fa fa-fw fa-sign-out" %>
-            <%= t ".logout" %>
+            Đăng xuất
           <% end %>
         </li>
       </ul>

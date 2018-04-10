@@ -9,7 +9,7 @@ module Admin
 
     def admin_user
       return if current_user.is_admin?
-      flash[:danger] = t ".access_denied"
+      flash[:danger] = "Từ chối truy cập"
       redirect_to root_url
     end
   end

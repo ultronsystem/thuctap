@@ -3,5 +3,8 @@ class UserBook < ApplicationRecord
   belongs_to :book
 
   enum status: {no_mark: 0, reading: 1, read: 2}
-  validates_associated :user, :book
+
+  scope :get_status, ->(book_id,user_id) do
+    where("book_id = #{book_id} AND user_id = #{user_id}")
+  end
 end
