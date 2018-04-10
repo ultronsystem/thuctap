@@ -22,4 +22,12 @@ class ApplicationController < ActionController::Base
     flash[:danger] = "Xin vui lòng đăng nhập tài khoản"
     redirect_to login_url
   end
+
+  def check_login_or_save_url url
+    unless logged_in?
+      session[:forwarding_url] = url
+      flash[:danger] = t "users.index.please_log_in"
+      redirect_to login_url
+    end
+  end
 end

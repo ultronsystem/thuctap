@@ -1,0 +1,40 @@
+<h5>Bình luận về bài đánh giá:</h5>
+<% if @comments.any? %>
+  <% @comments.each do |comment| %>
+    <div class="panel panel-default content_cmt" id="comment_<%= comment.id %>">
+      <div class="panel-heading cmt">
+        <strong>
+          <%= link_to find_user_review(comment.user_id), user_path(comment.user_id) %>
+        </strong>
+        <% if comment_update? comment %>
+          <%= t "comments.time_update", time: time_ago_in_words(comment.updated_at) %>
+        <% else %>
+          <%= t "comments.time_create", time: time_ago_in_words(comment.created_at) %>
+        <% end %>
+        <% if correct_user_comment? comment %>
+          <span class="action_buttons">
+            <%= link_to t("comments.edit"),
+              edit_book_review_comment_path(comment.review.book, comment.review,comment.id),
+              method: :get, remote: true, onclick: "hidden_comment_edit(#{comment.id})" %>
+            |
+            <%= link_to t("comments.del"),
+              book_review_comment_path(comment.review.book, comment.review,comment.id),
+              method: :delete, data: {confirm: "Bạn có muốn xóa bình luận này không?" } %>
+          </span>
+        <% end %>
+      </div>
+      <div class="panel-body cmt">
+        <div>
+          <%= comment.content %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <%= will_paginate @comments%>
+<% else %>
+  <p>Chưa có comment nào cho bài đánh giá</p>
+<% end %>
+<hr class="soft" />
+<div id="comment_form">
+  <%= render "comments/comment_form" %>
+</div>

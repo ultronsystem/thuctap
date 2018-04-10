@@ -112,3 +112,10 @@ en:
       hour:   "Giờ"
       minute: "Phút"
       second: "Giây"
+
+  comments:
+    edit: "Chỉnh sửa"
+    del: "Xóa"
+    confirm: "Bạn có muốn xóa comment này không ?"
+    time_update: "Đã được chỉnh sửa %{time} trước"
+    time_create: "Đã đăng %{time} trước"
