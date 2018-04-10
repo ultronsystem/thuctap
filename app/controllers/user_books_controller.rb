@@ -1,6 +1,6 @@
   class UserBooksController < ApplicationController
   before_action :find_book
-  before_action :logged_in_user
+  before_action -> {check_login_or_save_url(book_path @book.id)}
 
   def create
     if params[:button] == "like"
