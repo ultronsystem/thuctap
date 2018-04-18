@@ -28,7 +28,6 @@
 #
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
-
 en:
   h5_update: "Đã được chỉnh sửa %{time} trước"
   h5_create: "Đã đăng %{time} trước"
@@ -53,6 +52,8 @@ en:
           attributes:
             password:
               blank: " không được trống."
+
+  users.index.please_log_in: "Vui lòng đăng nhập tài khoản"
 
   layouts:
     nav_bar:

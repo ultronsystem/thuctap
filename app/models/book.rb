@@ -30,7 +30,7 @@ class Book < ApplicationRecord
     joins(:user_books).where("user_id = #{user_id} AND status != 0").order("title")
   end
   def self.search text_search, search_for
-    if search_for == I18n.t(".submit_author")
+    if search_for == "Tác giả"
       Book.search_for_author text_search
     else
       Book.search_for_title text_search

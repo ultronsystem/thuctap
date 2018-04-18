@@ -3,7 +3,7 @@ module Admin
     before_action :find_book, except: %i(index new create)
 
     def index
-      @books = Book.newest.paginate page: params[:page], per_page: Settings.admin_books_per_page
+      @books = Book.newest.paginate page: params[:page], per_page: 8
     end
 
     def new
